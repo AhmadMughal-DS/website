@@ -62,7 +62,7 @@ export default function Stats() {
     <section
       id="stats"
       className="py-5 position-relative"
-      style={{ background: 'var(--bp-card)' }}
+      style={{ background: 'rgba(17, 24, 39, 0.5)' }}
     >
       <hr className="bp-divider m-0 position-absolute top-0 w-100" />
       <Container>

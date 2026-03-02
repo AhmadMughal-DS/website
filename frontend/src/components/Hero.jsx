@@ -1,7 +1,3 @@
-/**
- * Hero Component — BOTPILOT AI
- * Full-screen hero with animated particles, heading, and CTA buttons (Bootstrap).
- */
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
@@ -10,9 +6,7 @@ export default function Hero() {
     <section
       id="home"
       className="position-relative d-flex align-items-center min-vh-100 text-center overflow-hidden"
-      style={{
-        background: 'radial-gradient(ellipse at 30% 40%, rgba(37,99,235,.15) 0%, transparent 60%), var(--bp-dark)',
-      }}
+      style={{ background: 'transparent' }}
     >
       {/* Floating particles */}
       <div className="position-absolute top-0 start-0 w-100 h-100" style={{ pointerEvents: 'none' }}>

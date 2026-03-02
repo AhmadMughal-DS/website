@@ -65,7 +65,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="bp-section" id="contact" style={{ background: 'var(--bp-card)' }}>
+    <section className="bp-section" id="contact" style={{ background: 'rgba(17, 24, 39, 0.5)' }}>
       <Container>
         <div className="text-center mb-5">
           <h2 className="bp-section-title gradient-text">Get In Touch</h2>

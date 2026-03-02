@@ -15,7 +15,7 @@ const benefits = [
 
 export default function Benefits() {
   return (
-    <section className="bp-section" id="benefits" style={{ background: 'var(--bp-card)' }}>
+    <section className="bp-section" id="benefits" style={{ background: 'rgba(17, 24, 39, 0.5)' }}>
       <Container>
         <div className="text-center mb-5">
           <h2 className="bp-section-title gradient-text">Why Choose BOTPILOT AI?</h2>

@@ -1,21 +1,36 @@
 /**
  * Navbar Component — BOTPILOT AI
- * Bootstrap-based responsive navbar with services dropdown and scroll effect.
+ * Bootstrap-based responsive navbar with "We Offer" mega dropdown that
+ * reveals service options on hover with smooth animations.
  */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Navbar as BsNavbar, Nav, NavDropdown, Container } from 'react-bootstrap';
+import { Navbar as BsNavbar, Nav, Container } from 'react-bootstrap';
 import servicesData from '../data/servicesData';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
+  const dropdownRef = useRef(null);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  /* Close dropdown on route change */
+  useEffect(() => { setDropdownOpen(false); }, [location.pathname]);
+
+  const handleMouseEnter = () => {
+    clearTimeout(timeoutRef.current);
+    setDropdownOpen(true);
+  };
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => setDropdownOpen(false), 200);
+  };
 
   return (
     <BsNavbar
@@ -43,15 +58,45 @@ export default function Navbar() {
           <Nav className="ms-auto align-items-lg-center gap-lg-1">
             <Nav.Link as={Link} to="/" active={location.pathname === '/'}>Home</Nav.Link>
 
-            {/* Services Dropdown */}
-            <NavDropdown title="We Offer" id="services-dropdown" menuVariant="dark">
-              {servicesData.map((s) => (
-                <NavDropdown.Item as={Link} to={`/services/${s.id}`} key={s.id}>
-                  <i className={`${s.icon} me-2 text-info`}></i>
-                  {s.name}
-                </NavDropdown.Item>
-              ))}
-            </NavDropdown>
+            {/* We Offer — Custom Hover Mega Dropdown */}
+            <div
+              className="nav-item position-relative"
+              ref={dropdownRef}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <a
+                href="#services"
+                className={`nav-link d-flex align-items-center gap-1 we-offer-trigger ${dropdownOpen ? 'active' : ''}`}
+                onClick={(e) => { e.preventDefault(); setDropdownOpen(!dropdownOpen); }}
+              >
+                We Offer
+                <i className={`bi bi-chevron-down we-offer-chevron ${dropdownOpen ? 'rotated' : ''}`} style={{ fontSize: '.7rem', transition: 'transform .3s ease' }}></i>
+              </a>
+
+              {/* Dropdown Panel */}
+              <div className={`we-offer-dropdown ${dropdownOpen ? 'open' : ''}`}>
+                <div className="we-offer-dropdown-inner">
+                  {servicesData.map((s, i) => (
+                    <Link
+                      key={s.id}
+                      to={`/services/${s.id}`}
+                      className="we-offer-item"
+                      style={{ animationDelay: `${i * 0.05}s` }}
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      <div className="we-offer-icon-wrap">
+                        <i className={`bi ${s.icon}`}></i>
+                      </div>
+                      <div>
+                        <div className="we-offer-item-title">{s.name}</div>
+                        <div className="we-offer-item-desc">{s.tagline}</div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             <Nav.Link as={Link} to="/about" active={location.pathname === '/about'}>About Us</Nav.Link>
             <Nav.Link as={Link} to="/contact" active={location.pathname === '/contact'}>Contact Us</Nav.Link>

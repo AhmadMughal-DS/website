@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import FluidBackground from './components/FluidBackground';
 import Home from './pages/Home';
 import About from './pages/About';
 import ContactPage from './pages/ContactPage';
@@ -21,6 +22,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <Router>
+      <FluidBackground />
       <ScrollToTop />
       <Navbar />
       <main>
