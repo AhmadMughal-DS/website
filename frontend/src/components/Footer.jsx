@@ -23,8 +23,8 @@ export default function Footer() {
               <span className="gradient-text">BOTPILOT AI</span>
             </div>
             <p className="text-secondary small mb-3" style={{ maxWidth: 300 }}>
-              Pakistan&apos;s premier DevOps, Cloud &amp; AI solutions agency. We help businesses deploy faster,
-              scale smarter, and stay secure with modern infrastructure.
+              Pakistan&apos;s premier digital &amp; AI solutions agency. We help businesses grow online with
+              websites, chatbots, social media, ads &amp; creative design.
             </p>
             <div className="d-flex gap-2">
               {['github', 'linkedin', 'twitter', 'instagram'].map((s) => (
@@ -43,12 +43,11 @@ export default function Footer() {
             <h6 className="text-white fw-bold text-uppercase mb-3" style={{ letterSpacing: 1 }}>Services</h6>
             <ul className="list-unstyled small">
               {[
-                ['infrastructure-automation', 'Infrastructure Automation'],
                 ['website-development', 'Website Development'],
-                ['ai-chatbot-integration', 'AI Chatbot Integration'],
-                ['cicd-pipeline-setup', 'CI/CD Pipeline Setup'],
-                ['containerization-kubernetes', 'Kubernetes'],
-                ['cloud-architecture-migration', 'Cloud Migration'],
+                ['ai-chatbot-automation', 'AI Chatbot & Automation'],
+                ['social-media-management', 'Social Media Management'],
+                ['google-meta-ads', 'Google & Meta Ads'],
+                ['video-editing-graphic-design', 'Video Editing & Design'],
               ].map(([id, label]) => (
                 <li className="mb-2" key={id}><Link to={`/services/${id}`} className="text-secondary">{label}</Link></li>
               ))}

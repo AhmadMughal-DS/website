@@ -1,11 +1,19 @@
 /**
  * Contact Component — BOTPILOT AI
- * Bootstrap-based contact info + form. Sends data to Python FastAPI backend.
+ * Bootstrap-based contact info + form.
+ * Sends email via FormSubmit.co (no backend/signup needed) + saves to FastAPI backend.
  */
 import { useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Spinner } from 'react-bootstrap';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+/* ─── FormSubmit.co ──────────────────────────────
+   Free email service — no signup, no API keys.
+   First submission se ek activation link aayega email pe,
+   usko click karo ek baar, uske baad sab auto kaam karega.
+   ────────────────────────────────────────────────── */
+const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/ahmad.dstech@gmail.com';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
@@ -19,15 +27,36 @@ export default function Contact() {
     setLoading(true);
     setStatus(null);
     try {
-      const res = await fetch(`${API_URL}/contact`, {
+      // 1. Send email via FormSubmit.co (direct to ahmad.dstech@gmail.com)
+      const res = await fetch(FORMSUBMIT_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+          _subject: `New Contact: ${form.name} — BOTPILOT AI`,
+          _template: 'table',
+          _captcha: 'true',
+        }),
       });
-      if (res.ok) {
-        setStatus('success');
-        setForm({ name: '', email: '', phone: '', message: '' });
-      } else setStatus('error');
+
+      if (!res.ok) throw new Error('FormSubmit failed');
+
+      // 2. Also save to backend (optional, for records)
+      try {
+        await fetch(`${API_URL}/contact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(form),
+        });
+      } catch {
+        // Backend save is optional — don't fail the form if it's down
+      }
+
+      setStatus('success');
+      setForm({ name: '', email: '', phone: '', message: '' });
     } catch {
       setStatus('error');
     } finally {
@@ -40,7 +69,7 @@ export default function Contact() {
       <Container>
         <div className="text-center mb-5">
           <h2 className="bp-section-title gradient-text">Get In Touch</h2>
-          <p className="text-secondary">Ready to transform your infrastructure? Let&apos;s talk.</p>
+          <p className="text-secondary">Ready to grow your business online? Let&apos;s talk.</p>
         </div>
 
         <Row className="g-5">
@@ -50,14 +79,14 @@ export default function Contact() {
               Let&apos;s Build Something Great Together
             </h3>
             <p className="text-secondary mb-4">
-              Whether you need cloud migration, CI/CD pipelines, or complete DevOps transformation —
-              our team is ready to help you ship faster, scale smarter, and stay secure.
+              Whether you need a website, AI chatbot, social media management, or ad campaigns &mdash;
+              our team is ready to help you grow your brand and get real results.
             </p>
 
             {[
               { icon: 'bi-geo-alt', label: 'Address', value: 'Lahore, Punjab, Pakistan' },
               { icon: 'bi-telephone', label: 'Phone', value: '+92 300 1234567' },
-              { icon: 'bi-envelope', label: 'Email', value: 'hello@botpilot.ai' },
+              { icon: 'bi-envelope', label: 'Email', value: 'ahmad.dstech@gmail.com' },
             ].map((item, i) => (
               <div className="d-flex align-items-center gap-3 mb-4" key={i}>
                 <div

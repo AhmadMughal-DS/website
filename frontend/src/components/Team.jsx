@@ -1,14 +1,15 @@
 /**
  * Team Component — BOTPILOT AI
- * Team member cards with Bootstrap grid, avatar placeholders, and social links.
+ * Team member cards with Bootstrap grid, real photos, and social links.
  */
 import { Container, Row, Col } from 'react-bootstrap';
 
 const team = [
-  { name: 'Umar Abdullah', role: 'Founder & Lead DevOps Engineer', image: null, linkedin: '#', github: '#' },
-  { name: 'Ahmed Khan', role: 'Cloud Architect', image: null, linkedin: '#', github: '#' },
-  { name: 'Sara Malik', role: 'Full-Stack Developer', image: null, linkedin: '#', github: '#' },
-  { name: 'Ali Hassan', role: 'AI / ML Engineer', image: null, linkedin: '#', github: '#' },
+  { name: 'Muhammad Umar', role: 'CEO & Founder', image: '/team/muhammad-umar.jpeg' },
+  { name: 'Muhammad Ahmad', role: 'Website & Chatbot Developer', image: '/team/muhammad-ahmad.png' },
+  { name: 'Hira Khalid', role: 'Social Media Manager', image: '/team/hira-khalid.jpeg' },
+  { name: 'Anam Parveen', role: 'Graphic Designer', image: '/team/anam-parveen.jpeg' },
+  { name: 'Syed Awais Bacha', role: 'Video Editor', image: '/team/awais-bacha.jpeg' },
 ];
 
 export default function Team() {
@@ -17,7 +18,7 @@ export default function Team() {
       <Container>
         <div className="text-center mb-5">
           <h2 className="bp-section-title gradient-text">Meet the Team</h2>
-          <p className="text-secondary">The engineers behind your next-gen infrastructure</p>
+          <p className="text-secondary">The creative minds behind your brand’s growth</p>
         </div>
 
         <Row className="g-4 justify-content-center">
@@ -42,21 +43,7 @@ export default function Team() {
                 {/* Info */}
                 <div className="p-3">
                   <h6 className="fw-bold text-white mb-1">{m.name}</h6>
-                  <p className="small mb-3" style={{ color: 'var(--bp-cyan)' }}>{m.role}</p>
-                  <div className="d-flex justify-content-center gap-2">
-                    <a href={m.linkedin} target="_blank" rel="noreferrer"
-                      className="btn btn-sm rounded-circle d-flex align-items-center justify-content-center"
-                      style={{ width: 34, height: 34, background: 'rgba(37,99,235,.1)', color: 'var(--bp-accent)' }}
-                    >
-                      <i className="bi bi-linkedin"></i>
-                    </a>
-                    <a href={m.github} target="_blank" rel="noreferrer"
-                      className="btn btn-sm rounded-circle d-flex align-items-center justify-content-center"
-                      style={{ width: 34, height: 34, background: 'rgba(37,99,235,.1)', color: 'var(--bp-accent)' }}
-                    >
-                      <i className="bi bi-github"></i>
-                    </a>
-                  </div>
+                  <p className="small mb-0" style={{ color: 'var(--bp-cyan)' }}>{m.role}</p>
                 </div>
               </div>
             </Col>

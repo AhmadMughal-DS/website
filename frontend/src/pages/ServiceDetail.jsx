@@ -1,10 +1,12 @@
 /**
  * ServiceDetail Page — BOTPILOT AI
- * Dynamic page that renders full content for each service (features, benefits, CTA).
+ * Dynamic page that renders full content for each service
+ * (overview, features, benefits, process, use cases, FAQ, CTA).
  * Uses the :serviceId URL param to look up data from servicesData.
  */
+import { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Accordion } from 'react-bootstrap';
 import servicesData from '../data/servicesData';
 
 export default function ServiceDetail() {
@@ -83,8 +85,43 @@ export default function ServiceDetail() {
         </Container>
       </section>
 
+      {/* ─── HOW WE WORK (PROCESS) ─────────────── */}
+      {service.process && (
+        <section className="bp-section">
+          <Container>
+            <div className="text-center mb-5">
+              <h2 className="bp-section-title gradient-text">How We Work</h2>
+              <p className="text-secondary">Our proven step-by-step process</p>
+            </div>
+            <Row className="justify-content-center">
+              <Col lg={10}>
+                {service.process.map((p, i) => (
+                  <div key={i} className="d-flex align-items-start gap-4 mb-4">
+                    {/* Step number */}
+                    <div
+                      className="d-flex align-items-center justify-content-center flex-shrink-0 rounded-circle fw-bold"
+                      style={{
+                        width: 52, height: 52,
+                        background: 'var(--bp-gradient)',
+                        fontSize: '1.1rem', color: '#fff',
+                      }}
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                    <div>
+                      <h5 className="text-white fw-semibold mb-1">{p.step}</h5>
+                      <p className="text-secondary mb-0">{p.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      )}
+
       {/* ─── BENEFITS ──────────────────────────── */}
-      <section className="bp-section">
+      <section className="bp-section" style={{ background: 'var(--bp-card)' }}>
         <Container>
           <div className="text-center mb-5">
             <h2 className="bp-section-title gradient-text">Key Benefits</h2>
@@ -108,8 +145,58 @@ export default function ServiceDetail() {
         </Container>
       </section>
 
+      {/* ─── USE CASES ─────────────────────────── */}
+      {service.useCases && (
+        <section className="bp-section">
+          <Container>
+            <div className="text-center mb-5">
+              <h2 className="bp-section-title gradient-text">Who Is This For?</h2>
+              <p className="text-secondary">Perfect for businesses like yours</p>
+            </div>
+            <Row className="g-4 justify-content-center">
+              {service.useCases.map((uc, i) => (
+                <Col md={6} key={i}>
+                  <div className="bp-card p-4 d-flex align-items-start gap-3 h-100">
+                    <i className="bi bi-arrow-right-circle-fill flex-shrink-0 mt-1" style={{ color: 'var(--bp-accent)', fontSize: '1.3rem' }}></i>
+                    <span className="text-secondary">{uc}</span>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </section>
+      )}
+
+      {/* ─── FAQ ───────────────────────────────── */}
+      {service.faq && (
+        <section className="bp-section" style={{ background: 'var(--bp-card)' }}>
+          <Container>
+            <div className="text-center mb-5">
+              <h2 className="bp-section-title gradient-text">Frequently Asked Questions</h2>
+              <p className="text-secondary">Got questions? We\u2019ve got answers.</p>
+            </div>
+            <Row className="justify-content-center">
+              <Col lg={8}>
+                <Accordion flush>
+                  {service.faq.map((item, i) => (
+                    <Accordion.Item eventKey={String(i)} key={i} className="border-0 mb-3" style={{ background: 'var(--bp-dark)', borderRadius: 12, overflow: 'hidden' }}>
+                      <Accordion.Header className="bp-accordion-header">
+                        {item.q}
+                      </Accordion.Header>
+                      <Accordion.Body className="text-secondary">
+                        {item.a}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  ))}
+                </Accordion>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      )}
+
       {/* ─── CTA ───────────────────────────────── */}
-      <section className="py-5" style={{ background: 'var(--bp-card)' }}>
+      <section className="py-5" style={{ background: 'var(--bp-dark)' }}>
         <Container className="text-center">
           <h3 className="gradient-text fw-bold mb-3" style={{ fontSize: '2rem' }}>
             Ready to Get Started with {service.name}?

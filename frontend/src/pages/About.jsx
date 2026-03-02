@@ -20,8 +20,8 @@ export default function About() {
         <div>
           <h1 className="display-4 fw-bold gradient-text text-uppercase mb-3">About BOTPILOT AI</h1>
           <p className="text-secondary mx-auto" style={{ maxWidth: 650, fontSize: '1.1rem' }}>
-            We&apos;re a team of passionate DevOps engineers, cloud architects, and AI specialists
-            on a mission to modernize Pakistan&apos;s tech infrastructure.
+            We&apos;re a team of passionate developers, designers, marketers &amp; AI specialists
+            on a mission to help businesses in Pakistan grow and thrive online.
           </p>
         </div>
       </section>
@@ -45,17 +45,18 @@ export default function About() {
               <h2 className="gradient-text fw-bold mb-4" style={{ fontSize: '2rem' }}>Our Story</h2>
               <p className="text-secondary lh-lg">
                 BOTPILOT AI was born from a simple observation: businesses in Pakistan deserve
-                world-class infrastructure without world-class pricing. Too many companies
-                struggle with manual deployments, fragile servers, and mounting cloud bills.
+                world-class digital solutions without world-class pricing. Too many companies
+                struggle with outdated websites, poor online presence, and wasted ad budgets.
               </p>
               <p className="text-secondary lh-lg">
-                We started as a small team of DevOps engineers who were tired of seeing
-                brilliant products held back by poor infrastructure. Today, we help companies
-                across 12+ countries ship faster, scale smarter, and sleep better at night.
+                We started as a small team of digital enthusiasts who were tired of seeing
+                brilliant products held back by weak marketing and lack of online presence.
+                Today, we help businesses grow with cutting-edge websites, AI-powered chatbots,
+                social media strategies, and high-ROI advertising campaigns.
               </p>
               <p className="text-secondary lh-lg">
-                Our approach combines battle-tested DevOps practices with cutting-edge AI and
-                cloud technologies — all tailored to the unique needs of the South Asian market.
+                Our approach combines creative design with data-driven marketing and intelligent
+                automation \u2014 all tailored to the unique needs of the Pakistani market.
               </p>
             </Col>
           </Row>
@@ -71,10 +72,10 @@ export default function About() {
           </div>
           <Row className="g-4 justify-content-center">
             {[
-              { emoji: '⚡', title: 'Speed', desc: 'We believe in rapid iteration. Deploy in minutes, not weeks. Every automation we build saves hours of manual work.' },
-              { emoji: '🛡️', title: 'Reliability', desc: '99.9% uptime is our baseline. We build systems that self-heal, auto-scale, and never quit.' },
-              { emoji: '🤝', title: 'Partnership', desc: 'We don\'t just deliver and disappear. Your success is our success — we stay with you through every scale-up.' },
-              { emoji: '💡', title: 'Innovation', desc: 'From AI chatbots to FinOps — we stay on the cutting edge so our clients always have a competitive advantage.' },
+              { emoji: '⚡', title: 'Speed', desc: 'We believe in rapid delivery. From concept to launch in record time \u2014 your business can\u2019t wait.' },
+              { emoji: '🎯', title: 'Results', desc: 'Every campaign, every design, every line of code is built to deliver measurable business growth.' },
+              { emoji: '🤝', title: 'Partnership', desc: 'We don\'t just deliver and disappear. Your success is our success \u2014 we grow together.' },
+              { emoji: '💡', title: 'Innovation', desc: 'From AI chatbots to viral social campaigns \u2014 we stay on the cutting edge so you stand out.' },
             ].map((v, i) => (
               <Col sm={6} lg={3} key={i}>
                 <div className="bp-card text-center p-4 h-100">

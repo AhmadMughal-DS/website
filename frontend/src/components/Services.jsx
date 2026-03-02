@@ -26,7 +26,7 @@ export default function Services() {
         <div className="text-center mb-5">
           <h2 className="bp-section-title gradient-text">What We Offer</h2>
           <p className="text-secondary mx-auto" style={{ maxWidth: 620 }}>
-            End-to-end DevOps, Cloud, and AI solutions crafted for the Pakistan market and beyond
+            End-to-end digital solutions — from websites to AI chatbots, social media to paid ads
           </p>
         </div>
 

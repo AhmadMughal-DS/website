@@ -5,12 +5,12 @@
 import { Container, Row, Col } from 'react-bootstrap';
 
 const benefits = [
-  { icon: 'bi-lightning-charge', title: 'Rapid Deployment', desc: 'Ship features faster with automated CI/CD pipelines, reducing release cycles from weeks to minutes.' },
-  { icon: 'bi-clock-history', title: '99.9% Uptime', desc: 'We design resilient, fault-tolerant architectures that keep your systems running around the clock.' },
-  { icon: 'bi-people', title: 'Dedicated Team', desc: 'Get a team of certified cloud and DevOps engineers fully dedicated to your project.' },
-  { icon: 'bi-graph-up-arrow', title: 'Scalable Solutions', desc: 'Infrastructure that scales with your business — from MVP to millions of users seamlessly.' },
-  { icon: 'bi-shield-lock', title: 'Security-First', desc: 'DevSecOps practices embedded from day one — vulnerability scanning, RBAC, and compliance.' },
-  { icon: 'bi-headset', title: '24/7 Support', desc: 'Round-the-clock support and incident management to keep your operations smooth.' },
+  { icon: 'bi-lightning-charge', title: 'Fast Turnaround', desc: 'From concept to launch in record time. We move fast so you can start seeing results sooner.' },
+  { icon: 'bi-bar-chart-line', title: 'Data-Driven Results', desc: 'Every strategy is backed by analytics. We track, measure, and optimize to maximize your ROI.' },
+  { icon: 'bi-people', title: 'Dedicated Team', desc: 'A passionate team of developers, designers, marketers & AI specialists fully focused on your growth.' },
+  { icon: 'bi-graph-up-arrow', title: 'Scalable Solutions', desc: 'Solutions that grow with your business \u2014 whether you\u2019re a startup or an established brand.' },
+  { icon: 'bi-palette', title: 'Creative Excellence', desc: 'Scroll-stopping designs and content that capture attention and build your brand identity.' },
+  { icon: 'bi-headset', title: '24/7 Support', desc: 'Round-the-clock support and communication to keep your projects running smoothly.' },
 ];
 
 export default function Benefits() {

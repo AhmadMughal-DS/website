@@ -24,7 +24,7 @@ export default function Hero() {
       <Container className="position-relative" style={{ zIndex: 2 }}>
         {/* Badge */}
         <span className="badge rounded-pill bg-dark border border-secondary text-light px-4 py-2 mb-4 fs-6">
-          🤖 Pakistan&apos;s Premier DevOps &amp; AI Solutions
+          🤖 Pakistan&apos;s Premier Digital &amp; AI Solutions Agency
         </span>
 
         <h1 className="display-3 fw-bold text-white mb-3" style={{ lineHeight: 1.15 }}>
@@ -33,8 +33,8 @@ export default function Hero() {
         </h1>
 
         <p className="lead text-secondary mx-auto mb-5" style={{ maxWidth: 650 }}>
-          A 360° Result-Oriented DevOps, Cloud &amp; AI Solutions Agency — Empowering
-          Businesses with Modern Infrastructure, Intelligent Automation &amp; Scalable Deployments.
+          A 360° Result-Oriented Digital Solutions Agency — Websites, AI Chatbots, Social Media,
+          Paid Ads &amp; Creative Design to Grow Your Business Online.
         </p>
 
         <div className="d-flex flex-wrap justify-content-center gap-3">
