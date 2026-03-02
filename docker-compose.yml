@@ -15,6 +15,7 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
+      - certbot-webroot:/var/www/certbot
     restart: unless-stopped
 
   # ── Backend (FastAPI + Uvicorn) ──
@@ -41,7 +42,7 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
-      - ./frontend/certbot-webroot:/var/www/certbot
+      - certbot-webroot:/var/www/certbot
     depends_on:
       - frontend
 
@@ -49,3 +50,4 @@ volumes:
   backend-data:
   certbot-etc:
   certbot-var:
+  certbot-webroot:
