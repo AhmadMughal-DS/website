@@ -14,5 +14,7 @@ FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 # SPA fallback: redirect all routes to index.html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
+# Create certbot webroot directory
+RUN mkdir -p /var/www/certbot
+EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
