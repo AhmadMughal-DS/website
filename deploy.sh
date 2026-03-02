@@ -27,7 +27,7 @@ if [ -d "/root/website" ]; then
 else
     echo ">> Cloning project..."
     cd /root
-    git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git website
+    git clone https://github.com/AhmadMughal-DS/website.git website
     cd /root/website
 fi
 
